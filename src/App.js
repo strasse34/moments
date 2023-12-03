@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" render={() => <h1>Home page</h1>} />
           <Route exact path="/signin" render={() => <h1>Sign in</h1>} />
-          <Route exact path="/signup" render={() => <SignUpForm  />} />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route render={() => <h1>Page Not Found!</h1>} />
         </Switch>
       </Container>

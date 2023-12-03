@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
@@ -8,6 +8,17 @@ import appStyles from "../../App.module.css";
 import { Form, Button, Image, Col, Row, Container } from "react-bootstrap";
 
 const SignUpForm = () => {
+  const [signUpData, setSignUpData] = useState({
+    username: "",
+    password1: "",
+    password2: "",
+  });
+  const { username, password1, password2 } = signUpData;
+
+  const handleChange = (event) => {
+    setSignUpData({...signUpData, [event.target.name]: event.target.value, });
+  }
+
   return (
     <Row className={styles.Row}>
       <Col className="my-auto py-2 p-md-2" md={6}>
@@ -22,6 +33,8 @@ const SignUpForm = () => {
                 type="text"
                 placeholder="Username"
                 name="username"
+                value={username}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -31,7 +44,9 @@ const SignUpForm = () => {
                 className={styles.Input}
                 type="password"
                 placeholder="Password"
-                name="Password1"
+                name="password1"
+                value={password1}
+                onChange={handleChange}
               />
             </Form.Group>
             <Form.Group controlId="Password2">
@@ -40,11 +55,16 @@ const SignUpForm = () => {
                 className={styles.Input}
                 type="password"
                 placeholder="Confirm password"
-                name="Password2"
+                name="password2"
+                value={password2}
+                onChange={handleChange}
               />
             </Form.Group>
 
-            <Button className= {`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+              type="submit"
+            >
               Sign up
             </Button>
           </Form>
